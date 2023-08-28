@@ -1,10 +1,10 @@
-import Layout from "../Layout";
+import UserLayout from "../Layouts/UserLayout";
 
 const HomePage = () => {
   return (
-    <Layout>
+    <UserLayout>
       <h2>Home page</h2>
-    </Layout>
+    </UserLayout>
   );
 };
 

@@ -1,10 +1,10 @@
-import Layout from "../Layout";
+import UserLayout from "../Layouts/UserLayout";
 
 const CartPage = () => {
   return (
-    <Layout>
+    <UserLayout>
       <h2>Cart page</h2>
-    </Layout>
+    </UserLayout>
   );
 };
 

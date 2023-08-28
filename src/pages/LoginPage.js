@@ -1,10 +1,11 @@
-import Layout from "../Layout";
+import AuthLayout from "../Layouts/AuthLayout";
+import LoginForm from "../components/LoginForm/LoginForm";
 
 const LoginPage = () => {
   return (
-    <Layout>
-      <h2>Login page</h2>
-    </Layout>
+    <AuthLayout>
+      <LoginForm></LoginForm>
+    </AuthLayout>
   );
 };
 
