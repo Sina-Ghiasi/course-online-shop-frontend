@@ -1,5 +1,5 @@
 import AuthLayout from "../Layouts/AuthLayout";
-import OtpForm from "../components/OtpForm/OtpForm";
+import OtpForm from "../components/forms/OtpForm";
 
 const OtpPage = () => {
   return (

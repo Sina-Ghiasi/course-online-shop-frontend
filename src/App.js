@@ -11,6 +11,11 @@ import AuthProvider from "./providers/AuthProvider";
 import ProfilePage from "./pages/ProfilePage";
 import OtpPage from "./pages/OtpPage";
 import ResetPassPage from "./pages/ResetPassPage";
+import AdminPanelPage from "./pages/AdminPanelPage";
+import Dashboard from "./components/admin/Dashboard";
+import Users from "./components/admin/Users";
+import Products from "./components/admin/Products";
+import Orders from "./components/admin/Orders";
 
 function App() {
   return (
@@ -26,6 +31,13 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/otp" element={<OtpPage />} />
         <Route path="/reset-pass" element={<ResetPassPage />} />
+        <Route path="/admin-panel" element={<AdminPanelPage />}>
+          <Route index element={<Dashboard />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="users" element={<Users />} />
+          <Route path="products" element={<Products />} />
+          <Route path="orders" element={<Orders />} />
+        </Route>
       </Routes>
     </AuthProvider>
   );

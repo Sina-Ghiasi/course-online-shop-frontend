@@ -4,10 +4,10 @@ import {
   ShoppingBagIcon,
   ArrowRightOnRectangleIcon,
 } from "@heroicons/react/24/outline";
-import logo from "../../assets/img/logo-min.png";
-import { useAuth } from "../../providers/AuthProvider";
+import logo from "../assets/img/logo-min.png";
+import { useAuth } from "../providers/AuthProvider";
 
-const Navigation = () => {
+const UserNavigation = () => {
   const userData = useAuth();
   return (
     <nav className="hidden md:block mb-6 shadow-sm sticky top-0 z-10 bg-slate-50">
@@ -107,4 +107,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default UserNavigation;

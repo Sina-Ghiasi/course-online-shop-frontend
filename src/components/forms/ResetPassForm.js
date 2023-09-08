@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Input from "../Input/Input";
+import Input from "../common/Input";
 import logo from "../../assets/img/logo-min.png";
 import {
   getResetPassData,

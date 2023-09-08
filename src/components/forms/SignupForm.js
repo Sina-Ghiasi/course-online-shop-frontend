@@ -4,7 +4,7 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { signupUser } from "../../services/signupService";
 import { useAuth } from "../../providers/AuthProvider";
-import Input from "../Input/Input";
+import Input from "../common/Input";
 import logo from "../../assets/img/logo-min.png";
 import { saveOtpData } from "../../services/otpService";
 
