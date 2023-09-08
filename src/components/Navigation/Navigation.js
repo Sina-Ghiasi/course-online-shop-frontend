@@ -1,10 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
 import {
+  UserIcon,
   ShoppingBagIcon,
   ArrowRightOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 import logo from "../../assets/img/logo-min.png";
+import { useAuth } from "../../providers/AuthProvider";
+
 const Navigation = () => {
+  const userData = useAuth();
   return (
     <nav className="hidden md:block mb-6 shadow-sm sticky top-0 z-10 bg-slate-50">
       <div className="container mx-auto p-3 flex items-center justify-between">
@@ -84,13 +88,18 @@ const Navigation = () => {
           >
             <ShoppingBagIcon className="h-6 w-6" />
           </NavLink>
+
           <NavLink
-            to={"/login"}
+            to={userData ? "/profile" : "/login"}
             className={({ isActive }) =>
               isActive ? "text-lime-600" : "text-slate-800"
             }
           >
-            <ArrowRightOnRectangleIcon className="h-6 w-6" />
+            {userData ? (
+              <UserIcon className="h-6 w-6" />
+            ) : (
+              <ArrowRightOnRectangleIcon className="h-6 w-6" />
+            )}
           </NavLink>
         </div>
       </div>

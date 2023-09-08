@@ -6,16 +6,15 @@ import { loginUser } from "../../services/loginService";
 import { useAuth, useAuthActions } from "../../providers/AuthProvider";
 import Input from "../Input/Input";
 import logo from "../../assets/img/logo-min.png";
+import { generateOtp, saveOtpData } from "../../services/otpService";
 
 const initialValues = {
-  email: "",
+  phoneNumber: "",
   password: "",
 };
 
 const validationSchema = Yup.object({
-  email: Yup.string()
-    .email("ایمیل وارد شده نامعتبر است")
-    .required("تکمیل ایمیل مورد نیاز است"),
+  phoneNumber: Yup.string().required("تکمیل شماره موبایل مورد نیاز است"),
   password: Yup.string().required("تکمیل پسورد مورد نیاز است"),
 });
 
@@ -47,6 +46,31 @@ const LoginForm = () => {
     validationSchema,
     validateOnMount: true,
   });
+
+  const otpLogin = async () => {
+    const { phoneNumber } = formik.values;
+    try {
+      const { data } = await generateOtp({ phoneNumber, type: "LOGIN" });
+      saveOtpData({ phoneNumber, token: data.token, type: "LOGIN" });
+      setError(null);
+      navigate("/otp" + redirect);
+    } catch (error) {
+      if (error.response && error.response.data.message)
+        setError("تکمیل شماره موبایل مورد نیاز است");
+    }
+  };
+  const resetPass = async () => {
+    const { phoneNumber } = formik.values;
+    try {
+      const { data } = await generateOtp({ phoneNumber, type: "RESET_PASS" });
+      saveOtpData({ phoneNumber, token: data.token, type: "RESET_PASS" });
+      setError(null);
+      navigate("/otp" + redirect);
+    } catch (error) {
+      if (error.response && error.response.data.message)
+        setError("تکمیل شماره موبایل مورد نیاز است");
+    }
+  };
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -54,18 +78,18 @@ const LoginForm = () => {
           <img className="mx-auto h-20 w-auto" src={logo} alt="Doryad" />
         </Link>
 
-        <h2 className="my-4 text-center text-2xl font-bold text-gray-900">
+        <h2 className="my-3 md:my-4 text-center text-lg md:text-xl text-gray-900">
           ورود به حساب کاربری
         </h2>
       </div>
 
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="my-4 space-y-4" onSubmit={formik.handleSubmit}>
+        <form className="my-3 md:my-4 space-y-4" onSubmit={formik.handleSubmit}>
           <Input
             formik={formik}
-            name="email"
-            type="email"
-            placeholder="ایمیل"
+            name="phoneNumber"
+            type="text"
+            placeholder="شماره موبایل"
           />
 
           <Input
@@ -84,18 +108,19 @@ const LoginForm = () => {
             ورود
           </button>
         </form>
-        <Link
+
+        <button
+          onClick={resetPass}
           className="block mb-3 font-semibold text-sm text-lime-600 hover:text-lime-500"
-          to={"#"}
         >
           فراموشی رمز عبور ؟
-        </Link>
-        <Link
-          to={"/otpAuth"}
-          className="flex w-full justify-center mb-4 rounded-md bg-slate-50 px-3 py-1.5 text-sm hover:font-semibold text-gray-900 shadow-sm hover:bg-lime-600 hover:text-slate-100 outline outline-1 outline-offset-2 outline-lime-600"
+        </button>
+        <button
+          onClick={otpLogin}
+          className="flex w-full justify-center mb-4 rounded-md bg-slate-50 px-3 py-1.5 text-sm hover:font-semibold text-gray-900 shadow-sm hover:bg-lime-600 hover:text-slate-100 outline outline-1 outline-offset-1 outline-lime-600"
         >
           ورود با رمز یکبار مصرف
-        </Link>
+        </button>
         {error && <p className="text-red-700 text-sm text-right">{error}</p>}
         <p className="mt-10 text-center text-sm text-gray-600">
           کاربر جدید ؟

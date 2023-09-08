@@ -2,62 +2,56 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { signupUser } from "../../services/signupService";
-import { useAuth } from "../../providers/AuthProvider";
 import Input from "../Input/Input";
 import logo from "../../assets/img/logo-min.png";
-import { saveOtpData } from "../../services/otpService";
+import {
+  getResetPassData,
+  removeResetPassData,
+  resetPass,
+} from "../../services/resetPassService";
+import { useAuthActions } from "../../providers/AuthProvider";
 
 const initialValues = {
-  name: "",
-  email: "",
-  phoneNumber: "",
-  password: "",
-  passwordConfirm: "",
+  newPassword: "",
+  newPasswordConfirm: "",
 };
 
 const validationSchema = Yup.object({
-  name: Yup.string()
-    .required("نکمیل اسم مورد نیاز است")
-    .min(6, "طول اسم مورد قبول نیست نام و نام خانوادگی خود را وارد نمایید"),
-  email: Yup.string()
-    .email("ایمیل وارد شده نامعتبر است")
-    .required("تکمیل ایمیل مورد نیاز است"),
-  phoneNumber: Yup.string()
-    .required("تکمیل شماره موبایل مورد نیاز است")
-    .matches(/^[0-9]{11}$/, "شماره موبایل وارد شده نامعتبر است")
-    .nullable(),
-  password: Yup.string()
+  newPassword: Yup.string()
     .required("تکمیل رمز عبور مورد نیاز است")
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
       "رمز عبور باید حداقل شامل 8 کاراکتر ، یکی بزرگ ، یکی کوچک \n یک شماره و یک کاراکتر ویژه باشد"
     ),
-  passwordConfirm: Yup.string()
+  newPasswordConfirm: Yup.string()
     .required("تکمیل تایید رمز عبور مورد نیاز است")
     .oneOf(
-      [Yup.ref("password"), null],
+      [Yup.ref("newPassword"), null],
       "تایید رمز عبور با رمز عبور مطابقت ندارد"
     ),
 });
 
-const SignupForm = () => {
+const ResetPassForm = () => {
   const [searchParams] = useSearchParams();
   const redirect = searchParams.get("redirect") || "/";
   const navigate = useNavigate();
-  const auth = useAuth();
+  const setAuth = useAuthActions();
   const [error, setError] = useState(null);
+
   useEffect(() => {
-    if (auth) navigate(redirect, { replace: true });
-  }, [auth, navigate, redirect]);
+    const resetPassData = getResetPassData();
+    if (!resetPassData) navigate("/", { replace: true });
+  }, [navigate]);
 
   const onSubmit = async (values) => {
-    const { name, email, phoneNumber, password } = values;
+    const { newPassword } = values;
+    const { userId, token } = getResetPassData();
     try {
-      const { data } = await signupUser({ name, email, phoneNumber, password });
-      saveOtpData({ phoneNumber, token: data.token, type: "SIGNUP" });
+      const { data } = await resetPass({ userId, newPassword }, token);
+      setAuth(data);
       setError(null);
-      navigate("/otp" + redirect);
+      removeResetPassData();
+      navigate(redirect, { replace: true });
     } catch (error) {
       if (error.response && error.response.data.message)
         setError(error.response.data.message);
@@ -77,36 +71,23 @@ const SignupForm = () => {
         </Link>
 
         <h2 className="my-5 text-center text-xl text-gray-900">
-          ثبت نام حساب کاربری
+          تغییر رمز عبور
         </h2>
       </div>
 
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <form className="space-y-4 mb-4" onSubmit={formik.handleSubmit}>
-          <Input formik={formik} name="name" placeholder="نام و نام خانوادگی" />
           <Input
             formik={formik}
-            name="email"
-            type="email"
-            placeholder="ایمیل"
-          />
-          <Input
-            formik={formik}
-            name="phoneNumber"
-            type="tel"
-            placeholder="شماره موبایل"
-          />
-          <Input
-            formik={formik}
-            name="password"
+            name="newPassword"
             type="password"
-            placeholder="رمز ورود"
+            placeholder="رمز ورود جدید"
           />
           <Input
             formik={formik}
-            name="passwordConfirm"
+            name="newPasswordConfirm"
             type="password"
-            placeholder="تایید رمز عبور"
+            placeholder="تایید رمز عبور جدید"
           />
           <button
             style={{ width: "100%" }}
@@ -114,22 +95,13 @@ const SignupForm = () => {
             disabled={!formik.isValid}
             className="flex w-full justify-center rounded-md bg-lime-600 px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-lime-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-600"
           >
-            ثبت نام
+            ثبت
           </button>
         </form>
         {error && <p className="text-red-700 text-sm text-right">{error}</p>}
-        <p className="mt-10 text-center text-sm text-gray-600">
-          حساب کاربری دارید ؟
-          <Link
-            to={"/login"}
-            className="font-semibold leading-6 text-lime-600 hover:text-lime-500 mr-2"
-          >
-            ورود
-          </Link>
-        </p>
       </div>
     </div>
   );
 };
 
-export default SignupForm;
+export default ResetPassForm;

@@ -2,7 +2,7 @@ import Navigation from "../components/Navigation/Navigation";
 
 const UserLayout = ({ children }) => {
   return (
-    <div className="bg-slate-50 text-center">
+    <div className="bg-slate-50 h-full text-center">
       <Navigation />
       {children}
     </div>
