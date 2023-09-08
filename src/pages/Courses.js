@@ -1,11 +1,5 @@
-import UserLayout from "../Layouts/UserLayout";
-
 const CoursesPage = () => {
-  return (
-    <UserLayout>
-      <h2>Courses page</h2>
-    </UserLayout>
-  );
+  return <h2>Courses page</h2>;
 };
 
 export default CoursesPage;

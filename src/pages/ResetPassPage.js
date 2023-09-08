@@ -1,12 +1,7 @@
-import AuthLayout from "../Layouts/AuthLayout";
 import ResetPassForm from "../components/forms/ResetPassForm";
 
 const ResetPassPage = () => {
-  return (
-    <AuthLayout>
-      <ResetPassForm></ResetPassForm>
-    </AuthLayout>
-  );
+  return <ResetPassForm />;
 };
 
 export default ResetPassPage;

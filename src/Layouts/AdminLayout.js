@@ -1,16 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
-const AdminLayout = ({ children }) => {
+const AdminLayout = () => {
   return (
     <div className="bg-slate-50 h-full">
       <nav>
-        <Link className="block" to="dashboard">
+        <Link className="block" to="/admin-panel/dashboard">
           پیشخوان
         </Link>
-        <Link className="block" to="users">
+        <Link className="block" to="/admin-panel/users">
           کاربران
         </Link>
       </nav>
+      <Outlet />
     </div>
   );
 };

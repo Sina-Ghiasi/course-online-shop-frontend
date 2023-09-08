@@ -1,5 +1,11 @@
-const AuthLayout = ({ children }) => {
-  return <div className="bg-slate-50 h-full">{children}</div>;
+import { Outlet } from "react-router-dom";
+
+const AuthLayout = () => {
+  return (
+    <div className="bg-slate-50 h-full">
+      <Outlet />
+    </div>
+  );
 };
 
 export default AuthLayout;

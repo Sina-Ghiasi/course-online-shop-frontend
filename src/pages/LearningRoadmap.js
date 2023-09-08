@@ -1,11 +1,5 @@
-import UserLayout from "../Layouts/UserLayout";
-
 const LearningRoadmapPage = () => {
-  return (
-    <UserLayout>
-      <h2>Learning roadmap page</h2>
-    </UserLayout>
-  );
+  return <h2>Learning roadmap page</h2>;
 };
 
 export default LearningRoadmapPage;
