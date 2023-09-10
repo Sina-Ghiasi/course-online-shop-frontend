@@ -6,7 +6,7 @@ export const resetPass = (data, token) => {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
-  return http.post("/user/reset-pass", data, config);
+  return http.post("/users/reset-pass", data, config);
 };
 
 export const saveResetPassData = (resetPassData) => {
