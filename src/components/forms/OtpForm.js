@@ -7,9 +7,9 @@ import {
   getOtpData,
   removeOtpData,
   verifyOtp,
-} from "../../services/otpService";
+} from "../../services/otpServices";
 import { useAuthActions } from "../../providers/AuthProvider";
-import { saveResetPassData } from "../../services/resetPassService";
+import { saveResetPassData } from "../../services/resetPassServices";
 
 const validationSchema = Yup.object({
   otp: Yup.array().of(Yup.string().required()),

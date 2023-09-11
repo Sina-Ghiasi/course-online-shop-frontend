@@ -2,11 +2,11 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { signupUser } from "../../services/signupService";
+import { signupUser } from "../../services/userServices";
 import { useAuth } from "../../providers/AuthProvider";
 import Input from "../common/Input";
 import logo from "../../assets/img/logo-min.png";
-import { saveOtpData } from "../../services/otpService";
+import { saveOtpData } from "../../services/otpServices";
 
 const initialValues = {
   name: "",
@@ -109,7 +109,6 @@ const SignupForm = () => {
             placeholder="تایید رمز عبور"
           />
           <button
-            style={{ width: "100%" }}
             type="submit"
             disabled={!formik.isValid}
             className="flex w-full justify-center rounded-md bg-lime-600 px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-lime-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-600"

@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getUserData, saveUserData } from "../services/userService";
+import { getUserData, saveUserData } from "../services/userServices";
 
 const AuthProviderContext = createContext();
 const AuthProviderContextDispatcher = createContext();

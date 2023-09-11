@@ -8,7 +8,7 @@ import {
   getResetPassData,
   removeResetPassData,
   resetPass,
-} from "../../services/resetPassService";
+} from "../../services/resetPassServices";
 import { useAuthActions } from "../../providers/AuthProvider";
 
 const initialValues = {
@@ -90,7 +90,6 @@ const ResetPassForm = () => {
             placeholder="تایید رمز عبور جدید"
           />
           <button
-            style={{ width: "100%" }}
             type="submit"
             disabled={!formik.isValid}
             className="flex w-full justify-center rounded-md bg-lime-600 px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-lime-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-600"

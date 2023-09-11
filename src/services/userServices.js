@@ -14,9 +14,31 @@ export const removeUserData = () => {
   localStorage.removeItem(LOCAL_STORAGE_AUTH_KEY);
 };
 
+export const signupUser = (data) => {
+  return http.post("/users/register", data);
+};
+
+export const loginUser = (data) => {
+  return http.post("/users/login", data);
+};
+
 export const getAllUsers = (token) => {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
   return http.get("/users/", config);
+};
+
+export const deleteUserById = (token, userId) => {
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  return http.delete("/users/" + userId, config);
+};
+
+export const getUserById = (token, userId) => {
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  return http.get("/users/" + userId, config);
 };

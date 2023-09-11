@@ -2,11 +2,11 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { loginUser } from "../../services/loginService";
+import { loginUser } from "../../services/userServices";
 import { useAuth, useAuthActions } from "../../providers/AuthProvider";
 import Input from "../common/Input";
 import logo from "../../assets/img/logo-min.png";
-import { generateOtp, saveOtpData } from "../../services/otpService";
+import { generateOtp, saveOtpData } from "../../services/otpServices";
 
 const initialValues = {
   phoneNumber: "",
@@ -100,7 +100,6 @@ const LoginForm = () => {
           />
 
           <button
-            style={{ width: "100%" }}
             type="submit"
             disabled={!formik.isValid}
             className="flex w-full justify-center rounded-md bg-lime-600 px-3 py-1.5 text-sm font-semibold text-slate-100 shadow-sm hover:bg-lime-500 "

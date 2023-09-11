@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import logo from "../../assets/img/logo-min.png";
+import logo from "../assets/img/logo-min.png";
 import {
   HomeIcon,
   UsersIcon,
@@ -19,8 +19,8 @@ const AdminNavigation = () => {
           <NavLink
             to={"/admin-panel/dashboard"}
             className={({ isActive }) =>
-              `flex items-center mr-8 py-1 text-base text-slate-600 font-semibold ${
-                isActive ? "text-slate-900" : "hover:text-slate-900"
+              `flex items-center mr-8 py-1 text-sm md:text-base text-slate-600 hover:text-slate-900 hover:font-semibold ${
+                isActive ? "text-slate-900 font-semibold" : ""
               }`
             }
           >
@@ -32,8 +32,8 @@ const AdminNavigation = () => {
           <NavLink
             to={"/admin-panel/users"}
             className={({ isActive }) =>
-              `flex items-center mr-8 py-1 text-base text-slate-600 font-semibold ${
-                isActive ? "text-slate-900" : "hover:text-slate-900"
+              `flex items-center mr-8 py-1 text-sm md:text-base text-slate-600 hover:text-slate-900 hover:font-semibold ${
+                isActive ? "text-slate-900 font-semibold" : ""
               }`
             }
           >
@@ -45,8 +45,8 @@ const AdminNavigation = () => {
           <NavLink
             to={"/admin-panel/products"}
             className={({ isActive }) =>
-              `flex items-center mr-8 py-1 text-base text-slate-600 font-semibold ${
-                isActive ? "text-slate-900" : "hover:text-slate-900"
+              `flex items-center mr-8 py-1 text-sm md:text-base text-slate-600 hover:text-slate-900 hover:font-semibold ${
+                isActive ? "text-slate-900 font-semibold" : ""
               }`
             }
           >
@@ -58,8 +58,8 @@ const AdminNavigation = () => {
           <NavLink
             to={"/admin-panel/orders"}
             className={({ isActive }) =>
-              `flex items-center text-base mr-8 py-1 text-slate-600 font-semibold ${
-                isActive ? "text-slate-900" : "hover:text-slate-900"
+              `flex items-center text-sm md:text-base mr-8 py-1 text-slate-600 hover:text-slate-900 hover:font-semibold ${
+                isActive ? "text-slate-900 font-semibold" : ""
               }`
             }
           >
