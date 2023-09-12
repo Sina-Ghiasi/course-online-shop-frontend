@@ -18,7 +18,7 @@ const tableHeaders = [
   "تاریخ عضویت",
   "عملکردها",
 ];
-const Users = () => {
+const UsersPage = () => {
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
 
@@ -108,4 +108,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default UsersPage;

@@ -30,3 +30,10 @@ export const updateProduct = (token, product) => {
   };
   return http.post("/products/update-product", product, config);
 };
+
+export const getNumberOfProducts = (token) => {
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  return http.get("/products/number-of-products", config);
+};

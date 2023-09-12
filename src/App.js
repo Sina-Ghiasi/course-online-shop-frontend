@@ -15,13 +15,13 @@ import ProfilePage from "./pages/ProfilePage";
 import OtpPage from "./pages/OtpPage";
 import ResetPassPage from "./pages/ResetPassPage";
 import AdminPanelPage from "./pages/AdminPanelPage";
-import Dashboard from "./pages/DashboardPage";
-import Users from "./pages/UsersPage";
-import Products from "./pages/ProductsPage";
-import Orders from "./pages/OrdersPage";
+import DashboardPage from "./pages/DashboardPage";
+import UsersPage from "./pages/UsersPage";
+import ProductsPage from "./pages/ProductsPage";
+import OrdersPage from "./pages/OrdersPage";
 import NotMatchPage from "./pages/NoMatchPage";
-import User from "./pages/UserPage";
-import Product from "./pages/ProductPage";
+import UserPage from "./pages/UserPage";
+import ProductPage from "./pages/ProductPage";
 
 function App() {
   return (
@@ -44,14 +44,13 @@ function App() {
         </Route>
         <Route element={<AdminLayout />}>
           <Route path="/admin-panel" element={<AdminPanelPage />}>
-            <Route index element={<Dashboard />} />
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="users" element={<Users />} />
-            <Route path="users/:userId" element={<User />} />
-            <Route path="products" element={<Products />} />
-            <Route path="products/add" element={<Product />} />
-            <Route path="products/:productId" element={<Product />} />
-            <Route path="orders" element={<Orders />} />
+            <Route index element={<DashboardPage />} />
+            <Route path="users" element={<UsersPage />} />
+            <Route path="users/:userId" element={<UserPage />} />
+            <Route path="products" element={<ProductsPage />} />
+            <Route path="products/add" element={<ProductPage />} />
+            <Route path="products/:productId" element={<ProductPage />} />
+            <Route path="orders" element={<OrdersPage />} />
           </Route>
         </Route>
       </Routes>

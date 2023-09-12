@@ -28,7 +28,6 @@ const ProductForm = ({ product, handleUpdate, isAddMode }) => {
     image: "",
   };
   const onSubmit = async (values) => {
-    console.log(values);
     const formData = new FormData();
     for (let value in values) {
       formData.append(value, values[value]);

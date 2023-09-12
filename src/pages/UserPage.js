@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getUserById, getUserData } from "../services/userServices";
 
-const User = () => {
+const UserPage = () => {
   const [user, setUser] = useState({});
   let { userId } = useParams();
 
@@ -43,4 +43,4 @@ const User = () => {
   );
 };
 
-export default User;
+export default UserPage;

@@ -17,7 +17,7 @@ const AdminNavigation = () => {
       <ul className="flex justify-items-center flex-wrap md:flex-col gap-x-4 lg:gap-x-8 lg:text-lg">
         <li>
           <NavLink
-            to={"/admin-panel/dashboard"}
+            to={"/admin-panel/"}
             className={({ isActive }) =>
               `flex items-center mr-8 py-1 text-sm md:text-base text-slate-600 hover:text-slate-900 hover:font-semibold ${
                 isActive ? "text-slate-900 font-semibold" : ""

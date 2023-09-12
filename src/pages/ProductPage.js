@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { getProductById } from "../services/productServices";
 import ProductForm from "../components/forms/ProductForm";
 
-const Product = () => {
+const ProductPage = () => {
   const { productId } = useParams();
 
   const [product, setProduct] = useState({});
@@ -43,4 +43,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default ProductPage;

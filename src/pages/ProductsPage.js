@@ -13,7 +13,7 @@ const tableHeaders = [
   "عکس محصول",
   "عملکردها",
 ];
-const Products = () => {
+const ProductsPage = () => {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
@@ -125,4 +125,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default ProductsPage;

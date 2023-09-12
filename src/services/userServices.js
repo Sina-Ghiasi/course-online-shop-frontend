@@ -42,3 +42,10 @@ export const getUserById = (token, userId) => {
   };
   return http.get("/users/" + userId, config);
 };
+
+export const getNumberOfUsers = (token) => {
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  return http.get("/users/number-of-users", config);
+};

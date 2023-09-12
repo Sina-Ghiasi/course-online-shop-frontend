@@ -1,15 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import { getUserData } from "../services/userServices";
 import WelcomeUser from "../components/WelcomeUser";
 import {
   TrashIcon,
   DocumentMagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const tableHeaders = ["نام کاربر", "مبلغ کل سفارش", "تاریخ سفارش", "عملکردها"];
-const Orders = () => {
-  const [orders, setOrders] = useState([]);
+const OrdersPage = () => {
+  const [orders] = useState([]);
   const navigate = useNavigate();
   /*
   useEffect(() => {
@@ -100,4 +99,4 @@ const Orders = () => {
   );
 };
 
-export default Orders;
+export default OrdersPage;

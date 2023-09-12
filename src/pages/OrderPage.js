@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { getUserData } from "../services/userServices";
+import { Link } from "react-router-dom";
 
-const Order = () => {
+const OrderPage = () => {
+  /*
   const [order, setOrder] = useState({});
   let { orderId } = useParams();
-  /*
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -41,4 +39,4 @@ const Order = () => {
   );
 };
 
-export default Order;
+export default OrderPage;
