@@ -5,7 +5,14 @@ import { PencilIcon, TrashIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 import { deleteProductById, getAllProducts } from "../services/productServices";
 
-const tableHeaders = ["نام", "قیمت", "درصد تخفیف", "تاریخ ایجاد", "عملکردها"];
+const tableHeaders = [
+  "نام",
+  "قیمت",
+  "درصد تخفیف",
+  "تاریخ ایجاد",
+  "عکس محصول",
+  "عملکردها",
+];
 const Products = () => {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
@@ -73,13 +80,24 @@ const Products = () => {
           </thead>
           <tbody>
             {products.map(
-              ({ _id, name, price, discount, createdAt }, index) => (
+              ({ _id, name, price, discount, createdAt, image }, index) => (
                 <tr key={_id} className="even:bg-gray-100 text-xs md:text-sm">
                   <td className="p-2 md:p-3">{name}</td>
-                  <td className="p-2 md:p-3">{price}</td>
-                  <td className="p-2 md:p-3">{discount + " %"}</td>
+                  <td className="p-2 md:p-3">{price} تومان</td>
+                  <td className="p-2 md:p-3">{discount} %</td>
                   <td className="p-2 md:p-3">
                     {new Date(createdAt).toLocaleDateString("fa-IR")}
+                  </td>
+                  <td className="text-center p-1">
+                    {image ? (
+                      <img
+                        className="h-16 w-auto inline-block"
+                        src={image}
+                        alt="product"
+                      />
+                    ) : (
+                      "بدون تصویر"
+                    )}
                   </td>
                   <td className="p-2 md:p-3">
                     <button

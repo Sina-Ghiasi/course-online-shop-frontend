@@ -1,6 +1,6 @@
-const Textarea = ({ label, name, placeholder, rows, formik }) => {
+const Textarea = ({ label, name, placeholder, rows, className, formik }) => {
   return (
-    <div>
+    <div className={className}>
       <label
         htmlFor={name}
         className="block mb-2 text-xs md:text-sm font-medium leading-6 text-gray-900"

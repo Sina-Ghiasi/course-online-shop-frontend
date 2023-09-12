@@ -17,7 +17,9 @@ export const deleteProductById = (token, productId) => {
 
 export const createProduct = (token, product) => {
   const config = {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   };
   return http.post("/products/create-product", product, config);
 };

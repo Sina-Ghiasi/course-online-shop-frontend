@@ -17,7 +17,7 @@ const validationSchema = Yup.object({
   image: Yup.string(),
 });
 
-const ProductForm = ({ product, isAddMode }) => {
+const ProductForm = ({ product, handleUpdate, isAddMode }) => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const initialValues = {
@@ -25,27 +25,42 @@ const ProductForm = ({ product, isAddMode }) => {
     description: product.description || "",
     price: product.price || "",
     discount: product.discount || 0,
-    image: product.image || "",
+    image: "",
   };
   const onSubmit = async (values) => {
-    try {
-      const currentUser = getUserData();
-      if (isAddMode) {
-        await createProduct(currentUser.token, values);
+    console.log(values);
+    const formData = new FormData();
+    for (let value in values) {
+      formData.append(value, values[value]);
+    }
+
+    const currentUser = getUserData();
+    if (isAddMode) {
+      try {
+        await createProduct(currentUser.token, formData);
         setError(null);
         navigate("/admin-panel/products");
-      } else {
-        const updateReq = {
-          productId: product._id,
-          ...values,
-        };
-        await updateProduct(currentUser.token, updateReq);
-        setError(null);
-        navigate("/admin-panel/products");
+      } catch (error) {
+        if (error.response && error.response.data.message)
+          setError(error.response.data.message);
+        else {
+          setError("انتشار محصول نا موفق ، دوباره امتحان کنید");
+        }
       }
-    } catch (error) {
-      if (error.response && error.response.data.message)
-        setError(error.response.data.message);
+    } else {
+      try {
+        formData.append("productId", product._id);
+
+        const { data } = await updateProduct(currentUser.token, formData);
+        handleUpdate(data);
+        setError(null);
+      } catch (error) {
+        if (error.response && error.response.data.message)
+          setError(error.response.data.message);
+        else {
+          setError("بروزرسانی محصول نا موفق ، دوباره امتحان کنید");
+        }
+      }
     }
   };
   const formik = useFormik({
@@ -53,34 +68,77 @@ const ProductForm = ({ product, isAddMode }) => {
     onSubmit,
     validationSchema,
     enableReinitialize: true,
+    validateOnMount: true,
   });
 
   return (
-    <div className="bg-clip-border rounded-lg bg-slate-50 text-slate-800 shadow-md w-full p-3 mb-5">
-      <form className="mb-3" onSubmit={formik.handleSubmit}>
+    <div className="bg-clip-border rounded-lg bg-slate-50 text-gray-900 shadow-md w-full p-3 md:px-6 md:py-4 mb-5">
+      <form
+        className="mb-3 flex justify-between flex-wrap gap-y-3"
+        onSubmit={formik.handleSubmit}
+        encType="multipart/form-data"
+      >
         <Input
           formik={formik}
           name="name"
           type="text"
+          label="نام محصول"
           placeholder="نام محصول"
+          className="w-full"
         />
         <Textarea
           formik={formik}
           name="description"
           placeholder="توضیحات"
-          rows="5"
+          label="توضیحات"
+          rows="12"
+          className="w-full md:w-2/3"
         />
-        <Input formik={formik} name="price" type="number" placeholder="قیمت" />
+        <div className="w-full md:w-1/3 flex flex-col items-center md:pr-3">
+          <label
+            htmlFor="image"
+            className="block w-full mb-2 text-sm font-medium text-gray-900 "
+          >
+            عکس محصول
+            {product.image && (
+              <img src={product.image} alt="product" className="p-2" />
+            )}
+          </label>
+          <input
+            type="file"
+            name="image"
+            id="image"
+            accept="image/*"
+            onChange={(e) =>
+              formik.setFieldValue("image", e.currentTarget.files[0])
+            }
+            className="block w-full file:cursor-pointer rounded-md shadow-sm border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1 text-gray-900 file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-slate-50 hover:file:bg-lime-600 file:text-gray-900 hover:file:text-slate-100 file:px-3 file:py-[0.32rem] file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem]  focus:outline-1 focus:outline-lime-600 "
+          />
+          <p className="mt-1 text-sm text-gray-500 ">
+            PNG, JPG ( سایز بهینه : 1024x1024px)
+          </p>
+        </div>
+        <Input
+          formik={formik}
+          name="price"
+          type="number"
+          placeholder="قیمت"
+          label="قیمت (تومان)"
+          className="md:w-2/4"
+        />
         <Input
           formik={formik}
           name="discount"
           type="number"
           placeholder="درصد تخفیف"
+          label="درصد تخفیف"
+          className="md:w-1/4"
         />
+
         <button
           type="submit"
           disabled={!formik.isValid}
-          className="flex justify-center rounded-md bg-lime-600 px-3 py-1.5 text-sm font-semibold text-slate-100 shadow-sm hover:bg-lime-500 "
+          className="flex justify-center self-center rounded-md bg-lime-600 px-3 py-1.5 text-sm font-semibold text-slate-100 shadow-sm hover:bg-lime-500 "
         >
           {isAddMode ? "انتشار محصول جدید" : "بروزرسانی محصول"}
         </button>

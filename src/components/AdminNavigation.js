@@ -8,7 +8,7 @@ import {
 } from "@heroicons/react/24/outline";
 const AdminNavigation = () => {
   return (
-    <nav className="bg-slate-50 py-4 md:min-h-screen">
+    <nav className="bg-slate-50 py-4 md:min-h-screen h-full">
       <div className="mb-5">
         <Link to={"/"}>
           <img className="mx-auto h-20 w-auto" src={logo} alt="Doryad" />

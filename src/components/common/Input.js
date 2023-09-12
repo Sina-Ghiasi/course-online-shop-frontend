@@ -1,6 +1,13 @@
-const Input = ({ label, name, placeholder, formik, type = "text" }) => {
+const Input = ({
+  label,
+  name,
+  placeholder,
+  formik,
+  type = "text",
+  className,
+}) => {
   return (
-    <div>
+    <div className={className}>
       <label
         htmlFor={name}
         className="block mb-2 text-xs md:text-sm font-medium leading-6 text-gray-900"
