@@ -49,7 +49,7 @@ const OrdersPage = () => {
           <WelcomeUser />
         </div>
       </div>
-      <div className="bg-clip-border rounded-lg bg-slate-50 text-slate-800 shadow-md h-full w-full overflow-auto">
+      <div className="bg-clip-border rounded-md bg-slate-50 text-slate-800 shadow-md h-full w-full overflow-auto">
         <table className="w-full min-w-max table-auto text-center">
           <thead>
             <tr>

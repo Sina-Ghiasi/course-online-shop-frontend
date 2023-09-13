@@ -34,7 +34,8 @@ const LoginForm = () => {
       const { data } = await loginUser(values);
       setAuth(data);
       setError(null);
-      navigate(redirect, { replace: true });
+      if (data.isAdmin) navigate("/admin-panel", { replace: true });
+      else navigate(redirect, { replace: true });
     } catch (error) {
       if (error.response && error.response.data.message)
         setError(error.response.data.message);

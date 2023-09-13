@@ -38,7 +38,8 @@ const OtpForm = ({ inputNum = 6 }) => {
           setAuth(data);
           setError(null);
           removeOtpData();
-          navigate(redirect, { replace: true });
+          if (data.isAdmin) navigate("/admin-panel", { replace: true });
+          else navigate(redirect, { replace: true });
           break;
         case "RESET_PASS":
           removeOtpData();

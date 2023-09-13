@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import {
   UserIcon,
   ShoppingBagIcon,
-  ArrowRightOnRectangleIcon,
+  ArrowLeftOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 import logo from "../assets/img/logo-min.png";
 import { useAuth } from "../providers/AuthProvider";
@@ -98,7 +98,7 @@ const UserNavigation = () => {
             {userData ? (
               <UserIcon className="h-6 w-6" />
             ) : (
-              <ArrowRightOnRectangleIcon className="h-6 w-6" />
+              <ArrowLeftOnRectangleIcon className="h-6 w-6" />
             )}
           </NavLink>
         </div>

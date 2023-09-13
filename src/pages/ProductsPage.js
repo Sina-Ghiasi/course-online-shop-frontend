@@ -64,7 +64,7 @@ const ProductsPage = () => {
         <PlusIcon className="h-4 w-4 md:h-5 md:w-5 ml-1 text-slate-50 hover:scale-105 duration-200" />
         اضافه کردن محصول
       </button>
-      <div className="bg-clip-border rounded-lg bg-slate-50 text-slate-800 shadow-md h-full w-full overflow-auto">
+      <div className="bg-clip-border rounded-md bg-slate-50 text-slate-800 shadow-md h-full w-full overflow-auto">
         <table className="w-full min-w-max table-auto text-center">
           <thead>
             <tr>

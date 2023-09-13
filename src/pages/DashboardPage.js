@@ -13,25 +13,29 @@ const DashboardPage = () => {
     const fetchData = async () => {
       const currentUser = getUserData();
       const currentTime = new Date().getTime();
-
-      const totalUsersCount = (await getNumberOfUsers(currentUser.token)).data;
-      const totalProductsCount = (await getNumberOfProducts(currentUser.token))
-        .data;
-      const totalOrdersCount = (await getNumberOfOrders(currentUser.token))
-        .data;
-      const last24HoursOrdersCount = (
-        await getNumberOfOrdersBetween(currentUser.token, {
-          lt: currentTime,
-          gt: currentTime - 24 * 60 * 60,
-        })
-      ).data;
-
-      setDashboardData({
-        totalUsersCount,
-        totalProductsCount,
-        totalOrdersCount,
-        last24HoursOrdersCount,
-      });
+      try {
+        const totalUsersCount = (await getNumberOfUsers(currentUser.token))
+          .data;
+        const totalProductsCount = (
+          await getNumberOfProducts(currentUser.token)
+        ).data;
+        const totalOrdersCount = (await getNumberOfOrders(currentUser.token))
+          .data;
+        const last24HoursOrdersCount = (
+          await getNumberOfOrdersBetween(currentUser.token, {
+            lt: currentTime,
+            gt: currentTime - 24 * 60 * 60,
+          })
+        ).data;
+        setDashboardData({
+          totalUsersCount,
+          totalProductsCount,
+          totalOrdersCount,
+          last24HoursOrdersCount,
+        });
+      } catch (error) {
+        console.log(error);
+      }
     };
     fetchData();
   }, []);
