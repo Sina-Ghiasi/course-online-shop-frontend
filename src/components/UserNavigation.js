@@ -125,8 +125,8 @@ const UserNavigation = () => {
           {/* mobile menu section  */}
           <div
             className={
-              "w-60 h-screen flex flex-col items-center transition-all duration-300 absolute top-0 z-10 bg-slate-50 " +
-              (isMobileNavigationOpen ? "right-0" : "-right-60")
+              "w-60 h-screen flex flex-col items-center transition-all duration-300 absolute top-0 z-10 bg-slate-50 shadow-md" +
+              (isMobileNavigationOpen ? " right-0" : " -right-60")
             }
           >
             <button

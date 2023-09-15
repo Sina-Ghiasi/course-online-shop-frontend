@@ -1,4 +1,3 @@
-import "./App.css";
 import AuthProvider from "./providers/AuthProvider";
 import { Route, Routes } from "react-router-dom";
 import UserLayout from "./Layouts/UserLayout";
