@@ -25,7 +25,7 @@ const UserFooter = () => {
           </p>
         </section>
         <section className="w-1/2 md:w-1/3">
-          <h3 className="font-semibold py-5">دسترسی سریع</h3>
+          <h3 className="font-semibold py-5 text-center">دسترسی سریع</h3>
           <ul className="flex items-center flex-col gap-y-4 lg:gap-x-8 text-sm">
             <li>
               <NavLink
@@ -72,7 +72,7 @@ const UserFooter = () => {
           </ul>
         </section>
         <section className="w-1/2 md:w-1/3">
-          <h3 className="font-semibold py-5">شبکه های اجتماعی</h3>
+          <h3 className="font-semibold py-5 text-center">شبکه های اجتماعی</h3>
           <ul className="flex flex-col items-center gap-y-4 lg:gap-x-8 text-sm text-gray-800 ">
             <li>
               <Link to="#" className="flex items-center justify-center">
@@ -131,7 +131,7 @@ const UserFooter = () => {
           </ul>
         </section>
       </div>
-      <div className="w-full p-3 text-gray-600 text-sm">
+      <div className="w-full p-3 text-gray-600 text-sm text-center">
         &copy; تمامی حقوق برای دُریاد محفوظ است
       </div>
     </footer>
