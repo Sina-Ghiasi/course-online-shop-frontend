@@ -29,14 +29,14 @@ const ProfilePage = () => {
       </div>
       <div className="w-full min-h-[250px] md:min-h-[350px] md:w-2/3 lg:w-3/4 bg-white shadow-md rounded-md px-6 py-4 text-right">
         <h2 className="mb-6 text-lg">دوره های ثبت نام شده</h2>
-        <div className="bg-clip-border rounded-md bg-slate-50 text-slate-800 shadow-md w-full overflow-auto">
+        <div className="bg-clip-border rounded-md bg-neutral-50 text-gray-800 shadow-md w-full overflow-auto">
           <table className="w-full min-w-max table-auto text-center">
             <thead>
               <tr>
                 {tableHeaders.map((head) => (
                   <th
                     key={head}
-                    className="text-xs md:text-sm font-semibold border-b-2 border-slate-300 bg-slate-50 p-2 md:p-3"
+                    className="text-xs md:text-sm font-semibold border-b-2 border-gray-300 bg-neutral-50 p-2 md:p-3"
                   >
                     {head}
                   </th>

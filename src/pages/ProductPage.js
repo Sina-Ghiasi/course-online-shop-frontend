@@ -35,7 +35,7 @@ const ProductPage = () => {
 
       <Link
         to="/admin-panel/products"
-        className="flex w-fit justify-center mb-4 rounded-md bg-slate-50 px-3 py-1.5 text-sm hover:font-semibold text-gray-900 shadow-sm hover:bg-lime-600 hover:text-slate-100 outline outline-1 outline-offset-1 outline-lime-600"
+        className="flex w-fit justify-center mb-4 rounded-md bg-neutral-50 px-3 py-1.5 text-sm hover:font-semibold text-gray-900 shadow-sm hover:bg-lime-600 hover:text-gray-100 outline outline-1 outline-offset-1 outline-lime-600"
       >
         برگشت به صفحه محصولات
       </Link>

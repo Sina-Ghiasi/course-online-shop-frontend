@@ -4,7 +4,7 @@ import UserFooter from "../components/UserFooter";
 
 const UserLayout = () => {
   return (
-    <div className="bg-slate-50 h-full min-h-screen">
+    <div className="bg-neutral-100 h-full min-h-screen">
       <UserNavigation />
       <Outlet />
       <UserFooter />

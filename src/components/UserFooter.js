@@ -45,7 +45,7 @@ const UserFooter = () => {
               <NavLink
                 to={"/learning-roadmap"}
                 className={({ isActive }) =>
-                  `py-1 text-slate-800 ${
+                  `py-1 text-gray-800 ${
                     isActive
                       ? "border-b-2 border-lime-600"
                       : "hover:border-b-2 hover:border-lime-600"
@@ -59,7 +59,7 @@ const UserFooter = () => {
               <NavLink
                 to={"/cart"}
                 className={({ isActive }) =>
-                  `py-1 text-slate-800 ${
+                  `py-1 text-gray-800 ${
                     isActive
                       ? "border-b-2 border-lime-600"
                       : "hover:border-b-2 hover:border-lime-600"

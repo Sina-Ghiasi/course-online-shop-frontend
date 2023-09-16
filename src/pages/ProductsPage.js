@@ -59,19 +59,19 @@ const ProductsPage = () => {
 
       <button
         onClick={addNewHandler}
-        className="flex w-fit rounded-md bg-lime-600 px-3 py-1.5  mb-4 text-sm font-semibold text-slate-100 shadow-sm hover:bg-lime-500 "
+        className="flex w-fit rounded-md bg-lime-600 px-3 py-1.5  mb-4 text-sm font-semibold text-gray-100 shadow-sm hover:bg-lime-500 "
       >
-        <PlusIcon className="h-4 w-4 md:h-5 md:w-5 ml-1 text-slate-50 hover:scale-105 duration-200" />
+        <PlusIcon className="h-4 w-4 md:h-5 md:w-5 ml-1 text-gray-50 hover:scale-105 duration-200" />
         اضافه کردن محصول
       </button>
-      <div className="bg-clip-border rounded-md bg-slate-50 text-slate-800 shadow-md h-full w-full overflow-auto">
+      <div className="bg-clip-border rounded-md bg-neutral-50 text-gray-800 shadow-md h-full w-full overflow-auto">
         <table className="w-full min-w-max table-auto text-center">
           <thead>
             <tr>
               {tableHeaders.map((head) => (
                 <th
                   key={head}
-                  className="text-xs md:text-sm font-semibold border-b-2 border-slate-300 bg-slate-50 p-2 md:p-3"
+                  className="text-xs md:text-sm font-semibold border-b-2 border-gray-300 bg-neutral-50 p-2 md:p-3"
                 >
                   {head}
                 </th>
@@ -105,7 +105,7 @@ const ProductsPage = () => {
                         editHandler(_id);
                       }}
                     >
-                      <PencilIcon className="h-4 w-4 md:h-5 md:w-5 mx-2 text-slate-900 hover:scale-105 duration-200" />
+                      <PencilIcon className="h-4 w-4 md:h-5 md:w-5 mx-2 text-gray-900 hover:scale-105 duration-200" />
                     </button>
                     <button
                       onClick={() => {

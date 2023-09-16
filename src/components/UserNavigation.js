@@ -15,7 +15,7 @@ const UserNavigation = () => {
   const [isMobileNavigationOpen, setIsMobileNavigationOpen] = useState(false);
   return (
     <>
-      <nav className="hidden md:block mb-6 shadow-sm sticky top-0 z-10 bg-slate-50">
+      <nav className="hidden md:block mb-6 shadow-sm sticky top-0 z-10 bg-neutral-50">
         <div className="container mx-auto p-3 flex items-center justify-between">
           {/* menu section  */}
           <div className="flex items-center gap-x-12">
@@ -29,7 +29,7 @@ const UserNavigation = () => {
                 <NavLink
                   to={"/"}
                   className={({ isActive }) =>
-                    `py-2 text-slate-800 ${
+                    `py-2 text-gray-800 ${
                       isActive
                         ? "border-b-2 border-lime-600"
                         : "hover:border-b-2 hover:border-lime-600"
@@ -43,7 +43,7 @@ const UserNavigation = () => {
                 <NavLink
                   to={"/courses"}
                   className={({ isActive }) =>
-                    `py-2 text-slate-800 ${
+                    `py-2 text-gray-800 ${
                       isActive
                         ? "border-b-2 border-lime-600"
                         : "hover:border-b-2 hover:border-lime-600"
@@ -57,7 +57,7 @@ const UserNavigation = () => {
                 <NavLink
                   to={"/learning-roadmap"}
                   className={({ isActive }) =>
-                    `py-2 text-slate-800 ${
+                    `py-2 text-gray-800 ${
                       isActive
                         ? "border-b-2 border-lime-600"
                         : "hover:border-b-2 hover:border-lime-600"
@@ -71,7 +71,7 @@ const UserNavigation = () => {
                 <NavLink
                   to={"/about-us"}
                   className={({ isActive }) =>
-                    `py-2 text-slate-800 ${
+                    `py-2 text-gray-800 ${
                       isActive
                         ? "border-b-2 border-lime-600"
                         : "hover:border-b-2 hover:border-lime-600"
@@ -88,7 +88,7 @@ const UserNavigation = () => {
             <NavLink
               to={"/cart"}
               className={({ isActive }) =>
-                isActive ? "text-lime-600" : "text-slate-800"
+                isActive ? "text-lime-600" : "text-gray-800"
               }
             >
               <ShoppingBagIcon className="h-6 w-6" />
@@ -97,7 +97,7 @@ const UserNavigation = () => {
             <NavLink
               to={userData ? "/profile" : "/login"}
               className={({ isActive }) =>
-                isActive ? "text-lime-600" : "text-slate-800"
+                isActive ? "text-lime-600" : "text-gray-800"
               }
             >
               {userData ? (
@@ -109,7 +109,7 @@ const UserNavigation = () => {
           </div>
         </div>
       </nav>
-      <nav className="md:hidden mb-6 shadow-sm sticky top-0 z-10 bg-slate-50">
+      <nav className="md:hidden mb-6 shadow-sm sticky top-0 z-10 bg-neutral-50">
         <div className="container mx-auto p-3 flex items-center justify-between">
           <button
             className="px-1 ml-6"
@@ -125,7 +125,7 @@ const UserNavigation = () => {
           {/* mobile menu section  */}
           <div
             className={
-              "w-60 h-screen flex flex-col items-center transition-all duration-300 absolute top-0 z-10 bg-slate-50 shadow-md" +
+              "w-60 h-screen flex flex-col items-center transition-all duration-300 absolute top-0 z-10 bg-neutral-50 shadow-md" +
               (isMobileNavigationOpen ? " right-0" : " -right-60")
             }
           >
@@ -140,7 +140,7 @@ const UserNavigation = () => {
                 <NavLink
                   to={"/"}
                   className={({ isActive }) =>
-                    `py-1 text-slate-800 ${
+                    `py-1 text-gray-800 ${
                       isActive
                         ? "border-b-2 border-lime-600"
                         : "hover:border-b-2 hover:border-lime-600"
@@ -154,7 +154,7 @@ const UserNavigation = () => {
                 <NavLink
                   to={"/courses"}
                   className={({ isActive }) =>
-                    `py-1 text-slate-800 ${
+                    `py-1 text-gray-800 ${
                       isActive
                         ? "border-b-2 border-lime-600"
                         : "hover:border-b-2 hover:border-lime-600"
@@ -168,7 +168,7 @@ const UserNavigation = () => {
                 <NavLink
                   to={"/learning-roadmap"}
                   className={({ isActive }) =>
-                    `py-1 text-slate-800 ${
+                    `py-1 text-gray-800 ${
                       isActive
                         ? "border-b-2 border-lime-600"
                         : "hover:border-b-2 hover:border-lime-600"
@@ -182,7 +182,7 @@ const UserNavigation = () => {
                 <NavLink
                   to={"/about-us"}
                   className={({ isActive }) =>
-                    `py-1 text-slate-800 ${
+                    `py-1 text-gray-800 ${
                       isActive
                         ? "border-b-2 border-lime-600"
                         : "hover:border-b-2 hover:border-lime-600"
@@ -199,7 +199,7 @@ const UserNavigation = () => {
             <NavLink
               to={"/cart"}
               className={({ isActive }) =>
-                isActive ? "text-lime-600" : "text-slate-800"
+                isActive ? "text-lime-600" : "text-gray-800"
               }
             >
               <ShoppingBagIcon className="h-6 w-6" />
@@ -208,7 +208,7 @@ const UserNavigation = () => {
             <NavLink
               to={userData ? "/profile" : "/login"}
               className={({ isActive }) =>
-                isActive ? "text-lime-600" : "text-slate-800"
+                isActive ? "text-lime-600" : "text-gray800"
               }
             >
               {userData ? (

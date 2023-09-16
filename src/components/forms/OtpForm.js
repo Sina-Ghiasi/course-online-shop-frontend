@@ -158,7 +158,7 @@ const OtpForm = ({ inputNum = 6 }) => {
 
         <button
           type="submit"
-          className="w-32 rounded-md bg-lime-600 mt-4 px-3 py-1.5 font-semibold text-slate-100 shadow-sm hover:bg-lime-500 "
+          className="w-32 rounded-md bg-lime-600 mt-4 px-3 py-1.5 font-semibold text-gray-100 shadow-sm hover:bg-lime-500 "
         >
           ثبت
         </button>

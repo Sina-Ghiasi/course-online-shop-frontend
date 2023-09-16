@@ -54,14 +54,14 @@ const CoursesPage = () => {
     setSortOption(selected);
   };
   return (
-    <div className="container mx-auto px-6 md:px-3 mb-8">
-      <div className="flex justify-between items-center mb-4 p-4 bg-white shadow-md rounded-md">
+    <div className="container mx-auto px-6 md:px-3 mb-6">
+      <div className="flex justify-between items-center mb-4 p-4 bg-neutral-50 shadow-md rounded-md">
         <h2 className="text-lg text-gray-800">دوره های آموزشی</h2>
         <select
           name="sortSelect"
           value={sortOption}
           onChange={handelSortSelect}
-          className="bg-slate-50 border border-gray-300 text-gray-800 rounded-md focus:ring-lime-500 focus:border-lime-500"
+          className="bg-neutral-50 border border-gray-300 text-gray-800 rounded-md focus:ring-lime-500 focus:border-lime-500"
         >
           {selectSortOptions.map((option) => (
             <option key={option.label} value={option.value}>
@@ -75,7 +75,7 @@ const CoursesPage = () => {
           <ProductCard
             key={product._id}
             product={product}
-            className="w-full overflow-hidden rounded-lg bg-white shadow-md border border-gray-100"
+            className="w-full overflow-hidden rounded-lg bg-neutral-50 shadow-md border border-gray-100"
           />
         ))}
       </div>

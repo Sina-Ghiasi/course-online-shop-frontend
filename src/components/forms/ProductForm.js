@@ -71,7 +71,7 @@ const ProductForm = ({ product, handleUpdate, isAddMode }) => {
   });
 
   return (
-    <div className="bg-clip-border rounded-lg bg-slate-50 text-gray-900 shadow-md w-full p-3 md:px-6 md:py-4 mb-5">
+    <div className="bg-clip-border rounded-lg bg-neutral-50 text-gray-900 shadow-md w-full p-3 md:px-6 md:py-4 mb-5">
       <form
         className="mb-3 flex justify-between flex-wrap gap-y-3"
         onSubmit={formik.handleSubmit}
@@ -111,7 +111,7 @@ const ProductForm = ({ product, handleUpdate, isAddMode }) => {
             onChange={(e) =>
               formik.setFieldValue("image", e.currentTarget.files[0])
             }
-            className="block w-full file:cursor-pointer rounded-md shadow-sm border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1 text-gray-900 file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-slate-50 hover:file:bg-lime-600 file:text-gray-900 hover:file:text-slate-100 file:px-3 file:py-[0.32rem] file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem]  focus:outline-1 focus:outline-lime-600 "
+            className="block w-full file:cursor-pointer rounded-md shadow-sm border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-1 text-gray-900 file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-50 hover:file:bg-lime-600 file:text-gray-900 hover:file:text-gray-100 file:px-3 file:py-[0.32rem] file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem]  focus:outline-1 focus:outline-lime-600 "
           />
           <p className="mt-1 text-sm text-gray-500 ">
             PNG, JPG ( سایز بهینه : 1024x1024px)
@@ -137,7 +137,7 @@ const ProductForm = ({ product, handleUpdate, isAddMode }) => {
         <button
           type="submit"
           disabled={!formik.isValid}
-          className="flex justify-center self-center rounded-md bg-lime-600 px-3 py-1.5 text-sm font-semibold text-slate-100 shadow-sm hover:bg-lime-500 "
+          className="flex justify-center self-center rounded-md bg-lime-600 px-3 py-1.5 text-sm font-semibold text-gray-100 shadow-sm hover:bg-lime-500 "
         >
           {isAddMode ? "انتشار محصول جدید" : "بروزرسانی محصول"}
         </button>

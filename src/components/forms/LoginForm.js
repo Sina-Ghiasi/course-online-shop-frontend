@@ -103,7 +103,7 @@ const LoginForm = () => {
           <button
             type="submit"
             disabled={!formik.isValid}
-            className="flex w-full justify-center rounded-md bg-lime-600 px-3 py-1.5 text-sm font-semibold text-slate-100 shadow-sm hover:bg-lime-500 "
+            className="flex w-full justify-center rounded-md bg-lime-600 px-3 py-1.5 text-sm font-semibold text-gray-100 shadow-sm hover:bg-lime-500 "
           >
             ورود
           </button>
@@ -117,7 +117,7 @@ const LoginForm = () => {
         </button>
         <button
           onClick={otpLogin}
-          className="flex w-full justify-center mb-4 rounded-md bg-slate-50 px-3 py-1.5 text-sm hover:font-semibold text-gray-900 shadow-sm hover:bg-lime-600 hover:text-slate-100 outline outline-1 outline-offset-1 outline-lime-600"
+          className="flex w-full justify-center mb-4 rounded-md bg-neutral-50 px-3 py-1.5 text-sm hover:font-semibold text-gray-900 shadow-sm hover:bg-lime-600 hover:text-gray-100 outline outline-1 outline-offset-1 outline-lime-600"
         >
           ورود با رمز یکبار مصرف
         </button>

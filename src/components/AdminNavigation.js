@@ -10,7 +10,7 @@ import {
 import LogoutButton from "./LogoutButton";
 const AdminNavigation = () => {
   return (
-    <nav className="bg-slate-50 py-4 md:min-h-screen h-full">
+    <nav className="bg-neutral-50 py-4 md:min-h-screen h-full">
       <div className="mb-5">
         <Link to={"/"}>
           <img className="mx-auto h-20 w-auto" src={logo} alt="Doryad" />
@@ -21,8 +21,8 @@ const AdminNavigation = () => {
           <NavLink
             to={"/admin-panel/"}
             className={({ isActive }) =>
-              `flex items-center mr-8 py-1 text-sm md:text-base text-slate-600 hover:text-slate-900 hover:font-semibold ${
-                isActive ? "text-slate-900 font-semibold" : ""
+              `flex items-center mr-8 py-1 text-sm md:text-base text-gray-600 hover:text-gray-900 hover:font-semibold ${
+                isActive ? "text-gray-900 font-semibold" : ""
               }`
             }
           >
@@ -34,8 +34,8 @@ const AdminNavigation = () => {
           <NavLink
             to={"/admin-panel/users"}
             className={({ isActive }) =>
-              `flex items-center mr-8 py-1 text-sm md:text-base text-slate-600 hover:text-slate-900 hover:font-semibold ${
-                isActive ? "text-slate-900 font-semibold" : ""
+              `flex items-center mr-8 py-1 text-sm md:text-base text-gray-600 hover:text-gray-900 hover:font-semibold ${
+                isActive ? "text-gray-900 font-semibold" : ""
               }`
             }
           >
@@ -47,8 +47,8 @@ const AdminNavigation = () => {
           <NavLink
             to={"/admin-panel/products"}
             className={({ isActive }) =>
-              `flex items-center mr-8 py-1 text-sm md:text-base text-slate-600 hover:text-slate-900 hover:font-semibold ${
-                isActive ? "text-slate-900 font-semibold" : ""
+              `flex items-center mr-8 py-1 text-sm md:text-base text-gray-600 hover:text-gray-900 hover:font-semibold ${
+                isActive ? "text-gray-900 font-semibold" : ""
               }`
             }
           >
@@ -60,8 +60,8 @@ const AdminNavigation = () => {
           <NavLink
             to={"/admin-panel/orders"}
             className={({ isActive }) =>
-              `flex items-center text-sm md:text-base mr-8 py-1 text-slate-600 hover:text-slate-900 hover:font-semibold ${
-                isActive ? "text-slate-900 font-semibold" : ""
+              `flex items-center text-sm md:text-base mr-8 py-1 text-gray-600 hover:text-gray-900 hover:font-semibold ${
+                isActive ? "text-gray-900 font-semibold" : ""
               }`
             }
           >
