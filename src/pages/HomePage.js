@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import homePageHeroBg1 from "../assets/img/home-page-hero-bg-1-min.png";
-import homePageHeroBg2 from "../assets/img/home-page-hero-bg-2-min.png";
-import homePageHeroBg3 from "../assets/img/home-page-hero-bg-3-min.png";
+import homePageBg1 from "../assets/img/home-page-bg-1-min.png";
+import homePageBg2 from "../assets/img/home-page-bg-2-min.png";
+import homePageBg3 from "../assets/img/home-page-bg-3-min.png";
 import { SwiperSlider, SwiperSlide } from "../components/common/Swiper";
 import ProductCard from "../components/productCard";
 import { useEffect, useState } from "react";
@@ -45,11 +45,7 @@ const HomePage = () => {
             </Link>
           </div>
           <div className="w-full md:w-1/2">
-            <img
-              className="mx-auto"
-              src={homePageHeroBg1}
-              alt="hero background"
-            />
+            <img className="mx-auto" src={homePageBg1} alt="hero background" />
           </div>
         </div>
       </section>
@@ -279,11 +275,7 @@ const HomePage = () => {
       <section className="mx-auto px-6 md:px-3 mb-6 bg-gradient-to-t from-sky-700 from-65% to-65%">
         <div className="container mx-auto flex flex-wrap">
           <div className="w-full md:w-1/2 mb-5 md:mb-0">
-            <img
-              className="mx-auto"
-              src={homePageHeroBg2}
-              alt="Doryad method"
-            />
+            <img className="mx-auto" src={homePageBg2} alt="Doryad method" />
           </div>
           <div className="w-full md:w-1/2 mt-auto mb-12 flex justify-center">
             <div>
@@ -342,7 +334,7 @@ const HomePage = () => {
           <div className="w-full md:w-1/2">
             <img
               className="mx-auto mb-5 md:mb-0"
-              src={homePageHeroBg3}
+              src={homePageBg3}
               alt="about us"
             />
           </div>

@@ -4,12 +4,12 @@ import logo from "../assets/img/logo-min.png";
 const UserFooter = () => {
   return (
     <footer className="w-full">
-      <div className="container mx-auto py-4 px-3 flex flex-wrap justify-between border-t border-gray-200">
+      <div className="container mx-auto py-4 px-3 md:px-0 flex flex-wrap justify-between border-t border-gray-200">
         <section className="w-full md:w-1/3 px-3">
           <div className="flex items-center justify-between mb-2">
             <div>
               <Link to={"/"}>
-                <img className="mx-auto h-16 w-auto" src={logo} alt="Doryad" />
+                <img className="mx-auto h-20 w-auto" src={logo} alt="Doryad" />
               </Link>
             </div>
             <h3 className="font-semibold">
@@ -132,7 +132,7 @@ const UserFooter = () => {
         </section>
       </div>
       <div className="w-full p-3 text-gray-600 text-sm text-center">
-        &copy; تمامی حقوق برای دُریاد محفوظ است
+        &copy; تمامی حقوق برای دُریاد محفوظ است.
       </div>
     </footer>
   );
