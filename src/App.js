@@ -22,40 +22,43 @@ import NotMatchPage from "./pages/NoMatchPage";
 import UserPage from "./pages/UserPage";
 import ProductPage from "./pages/ProductPage";
 import CoursePage from "./pages/CoursePage";
+import CartProvider from "./providers/CartProvider";
 
 function App() {
   return (
-    <AuthProvider>
-      <Routes>
-        <Route element={<UserLayout />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/learning-roadmap" element={<LearningRoadmapPage />} />
-          <Route path="/courses" element={<CoursesPage />} />
-          <Route path="/courses/:productId" element={<CoursePage />} />
-          <Route path="/about-us" element={<AboutUsPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="*" element={<NotMatchPage />} />
-        </Route>
-        <Route element={<AuthLayout />}>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/otp" element={<OtpPage />} />
-          <Route path="/reset-pass" element={<ResetPassPage />} />
-        </Route>
-        <Route element={<AdminLayout />}>
-          <Route path="/admin-panel" element={<AdminPanelPage />}>
-            <Route index element={<DashboardPage />} />
-            <Route path="users" element={<UsersPage />} />
-            <Route path="users/:userId" element={<UserPage />} />
-            <Route path="products" element={<ProductsPage />} />
-            <Route path="products/add" element={<ProductPage />} />
-            <Route path="products/:productId" element={<ProductPage />} />
-            <Route path="orders" element={<OrdersPage />} />
+    <CartProvider>
+      <AuthProvider>
+        <Routes>
+          <Route element={<UserLayout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/learning-roadmap" element={<LearningRoadmapPage />} />
+            <Route path="/courses" element={<CoursesPage />} />
+            <Route path="/courses/:productId" element={<CoursePage />} />
+            <Route path="/about-us" element={<AboutUsPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="*" element={<NotMatchPage />} />
           </Route>
-        </Route>
-      </Routes>
-    </AuthProvider>
+          <Route element={<AuthLayout />}>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/otp" element={<OtpPage />} />
+            <Route path="/reset-pass" element={<ResetPassPage />} />
+          </Route>
+          <Route element={<AdminLayout />}>
+            <Route path="/admin-panel" element={<AdminPanelPage />}>
+              <Route index element={<DashboardPage />} />
+              <Route path="users" element={<UsersPage />} />
+              <Route path="users/:userId" element={<UserPage />} />
+              <Route path="products" element={<ProductsPage />} />
+              <Route path="products/add" element={<ProductPage />} />
+              <Route path="products/:productId" element={<ProductPage />} />
+              <Route path="orders" element={<OrdersPage />} />
+            </Route>
+          </Route>
+        </Routes>
+      </AuthProvider>
+    </CartProvider>
   );
 }
 

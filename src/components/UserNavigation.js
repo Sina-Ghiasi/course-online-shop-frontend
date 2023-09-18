@@ -9,9 +9,12 @@ import {
 import logo from "../assets/img/logo-min.png";
 import { useAuth } from "../providers/AuthProvider";
 import { useState } from "react";
+import { useCart } from "../providers/CartProvider";
 
 const UserNavigation = () => {
   const userData = useAuth();
+  const { cart } = useCart();
+
   const [isMobileNavigationOpen, setIsMobileNavigationOpen] = useState(false);
   return (
     <>
@@ -88,10 +91,13 @@ const UserNavigation = () => {
             <NavLink
               to={"/cart"}
               className={({ isActive }) =>
-                isActive ? "text-lime-600" : "text-gray-800"
+                `relative ${isActive ? "text-lime-600" : "text-gray-800"}`
               }
             >
               <ShoppingBagIcon className="h-6 w-6" />
+              <span className="absolute top-0 -right-2.5 rounded-full text-xs bg-lime-600 text-gray-50 px-[6px] pt-[2px]">
+                {cart.length ? cart.length : "0"}
+              </span>
             </NavLink>
 
             <NavLink
@@ -199,10 +205,13 @@ const UserNavigation = () => {
             <NavLink
               to={"/cart"}
               className={({ isActive }) =>
-                isActive ? "text-lime-600" : "text-gray-800"
+                `relative ${isActive ? "text-lime-600" : "text-gray-800"}`
               }
             >
               <ShoppingBagIcon className="h-6 w-6" />
+              <span className="absolute top-0 -right-2.5 rounded-full text-xs bg-lime-600 text-gray-50 px-[6px] pt-[2px]">
+                {cart.length ? cart.length : "0"}
+              </span>
             </NavLink>
 
             <NavLink

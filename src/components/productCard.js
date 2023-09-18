@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom";
+import { useCartActions } from "../providers/CartProvider";
 
 const ProductCard = ({ product, className }) => {
+  const dispatch = useCartActions();
+  const addProductHandler = (product) => {
+    dispatch({ type: "ADD_TO_CART", payload: product });
+  };
+
   return (
     <div className={className}>
-      {console.log(product)}
       <div className="relative h-60">
         <Link to={"/courses/" + product._id}>
           <img
@@ -41,12 +46,12 @@ const ProductCard = ({ product, className }) => {
             <div className="font-bold text-gray-800">{product.price} تومان</div>
           </div>
 
-          <Link
-            to="#"
+          <button
+            onClick={() => addProductHandler(product)}
             className="rounded-md bg-lime-600 px-5 py-3 text-center text-sm font-semibold text-white hover:bg-lime-500"
           >
-            ثبت نام دوره
-          </Link>
+            ثبت نام در دوره
+          </button>
         </div>
       </div>
     </div>
