@@ -6,6 +6,7 @@ import Textarea from "../common/Textarea";
 import { createProduct, updateProduct } from "../../services/productServices";
 import { useNavigate } from "react-router-dom";
 import { getUserData } from "../../services/userServices";
+import { toast } from "react-toastify";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("تکمیل اسم مورد نیاز است"),
@@ -53,6 +54,7 @@ const ProductForm = ({ product, handleUpdate, isAddMode }) => {
 
         const { data } = await updateProduct(currentUser.token, formData);
         handleUpdate(data);
+        toast.success("آپدیت با موفقیت انجام شد");
         setError(null);
       } catch (error) {
         if (error.response && error.response.data.message)

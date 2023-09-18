@@ -1,12 +1,13 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { loginUser } from "../../services/userServices";
 import { useAuth, useAuthActions } from "../../providers/AuthProvider";
 import Input from "../common/Input";
 import logo from "../../assets/img/logo-min.png";
 import { generateOtp, saveOtpData } from "../../services/otpServices";
+import { toast } from "react-toastify";
 
 const initialValues = {
   phoneNumber: "",
@@ -24,7 +25,7 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const auth = useAuth();
   const setAuth = useAuthActions();
-  const [error, setError] = useState(null);
+
   useEffect(() => {
     if (auth) navigate(redirect, { replace: true });
   }, [auth, navigate, redirect]);
@@ -33,12 +34,13 @@ const LoginForm = () => {
     try {
       const { data } = await loginUser(values);
       setAuth(data);
-      setError(null);
+
       if (data.isAdmin) navigate("/admin-panel", { replace: true });
       else navigate(redirect, { replace: true });
     } catch (error) {
       if (error.response && error.response.data.message)
-        setError(error.response.data.message);
+        toast.error(error.response.data.message);
+      else console.log(error);
     }
   };
   const formik = useFormik({
@@ -53,11 +55,11 @@ const LoginForm = () => {
     try {
       const { data } = await generateOtp({ phoneNumber, type: "LOGIN" });
       saveOtpData({ phoneNumber, token: data.token, type: "LOGIN" });
-      setError(null);
       navigate("/otp" + redirect);
     } catch (error) {
       if (error.response && error.response.data.message)
-        setError("تکمیل شماره موبایل مورد نیاز است");
+        toast.error(error.response.data.message);
+      else console.log(error);
     }
   };
   const resetPass = async () => {
@@ -65,11 +67,11 @@ const LoginForm = () => {
     try {
       const { data } = await generateOtp({ phoneNumber, type: "RESET_PASS" });
       saveOtpData({ phoneNumber, token: data.token, type: "RESET_PASS" });
-      setError(null);
       navigate("/otp" + redirect);
     } catch (error) {
       if (error.response && error.response.data.message)
-        setError("تکمیل شماره موبایل مورد نیاز است");
+        toast.error(error.response.data.message);
+      else console.log(error);
     }
   };
   return (
@@ -121,7 +123,7 @@ const LoginForm = () => {
         >
           ورود با رمز یکبار مصرف
         </button>
-        {error && <p className="text-red-700 text-sm text-right">{error}</p>}
+
         <p className="mt-10 text-center text-sm text-gray-600">
           کاربر جدید ؟
           <Link

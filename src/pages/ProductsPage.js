@@ -4,6 +4,7 @@ import WelcomeUser from "../components/WelcomeUser";
 import { PencilIcon, TrashIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 import { deleteProductById, getAllProducts } from "../services/productServices";
+import { toast } from "react-toastify";
 
 const tableHeaders = [
   "نام",
@@ -44,7 +45,7 @@ const ProductsPage = () => {
       );
       setProducts(filteredProducts);
     } catch (error) {
-      console.log(error);
+      toast.error(error);
     }
   };
 

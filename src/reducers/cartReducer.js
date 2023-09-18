@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TO_CART": {
@@ -7,7 +8,7 @@ const cartReducer = (state, action) => {
       );
 
       if (index > -1) {
-        console.log("محصول قبلا اضافه شده است");
+        toast.error("دوره قبلا اضافه شده است");
         return state;
       }
 
@@ -16,6 +17,7 @@ const cartReducer = (state, action) => {
 
       updatedCart.push({ ...action.payload });
 
+      toast.success("دوره به سبد اضافه شد");
       return {
         ...state,
         cart: updatedCart,

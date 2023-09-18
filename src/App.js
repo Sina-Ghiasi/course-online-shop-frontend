@@ -24,6 +24,9 @@ import ProductPage from "./pages/ProductPage";
 import CoursePage from "./pages/CoursePage";
 import CartProvider from "./providers/CartProvider";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
+
 function App() {
   return (
     <CartProvider>
@@ -57,6 +60,7 @@ function App() {
             </Route>
           </Route>
         </Routes>
+        <ToastContainer rtl={true} theme="light" autoClose={3000} />
       </AuthProvider>
     </CartProvider>
   );

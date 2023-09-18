@@ -42,7 +42,10 @@ const ResetPassForm = () => {
     const resetPassData = getResetPassData();
     if (!resetPassData) navigate("/", { replace: true });
   }, [navigate]);
-
+  const cancelResetPass = () => {
+    removeResetPassData();
+    navigate("/login" + redirect, { replace: true });
+  };
   const onSubmit = async (values) => {
     const { newPassword } = values;
     const { userId, token } = getResetPassData();
@@ -89,13 +92,21 @@ const ResetPassForm = () => {
             type="password"
             placeholder="تایید رمز عبور جدید"
           />
-          <button
-            type="submit"
-            disabled={!formik.isValid}
-            className="flex w-full justify-center rounded-md bg-lime-600 px-3 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-lime-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-600"
-          >
-            ثبت
-          </button>
+          <div className="flex justify-between items-center mt-4">
+            <button
+              onClick={cancelResetPass}
+              className="w-fit rounded-md bg-neutral-50 px-4 py-1.5 text-sm hover:font-semibold text-gray-900 shadow-sm hover:bg-red-700 hover:text-gray-100 outline outline-1 outline-offset-1 outline-red-700"
+            >
+              لغو
+            </button>
+            <button
+              type="submit"
+              disabled={!formik.isValid}
+              className="w-fit flex justify-center rounded-md bg-lime-600 px-4 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-lime-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-600"
+            >
+              ثبت
+            </button>
+          </div>
         </form>
         {error && <p className="text-red-700 text-sm text-right">{error}</p>}
       </div>

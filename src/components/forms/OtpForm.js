@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
@@ -10,6 +10,7 @@ import {
 } from "../../services/otpServices";
 import { useAuthActions } from "../../providers/AuthProvider";
 import { saveResetPassData } from "../../services/resetPassServices";
+import { toast } from "react-toastify";
 
 const validationSchema = Yup.object({
   otp: Yup.array().of(Yup.string().required()),
@@ -18,7 +19,6 @@ const validationSchema = Yup.object({
 const OtpForm = ({ inputNum = 6 }) => {
   const [searchParams] = useSearchParams();
   const redirect = searchParams.get("redirect") || "/";
-  const [error, setError] = useState(null);
   const navigate = useNavigate();
   const setAuth = useAuthActions();
 
@@ -26,7 +26,10 @@ const OtpForm = ({ inputNum = 6 }) => {
     const otpData = getOtpData();
     if (!otpData) navigate("/", { replace: true });
   }, [navigate]);
-
+  const cancelOtp = () => {
+    removeOtpData();
+    navigate("/login" + redirect, { replace: true });
+  };
   const onSubmit = async (values) => {
     const otp = values.otp.join("");
     const { phoneNumber, token, type } = getOtpData();
@@ -36,7 +39,6 @@ const OtpForm = ({ inputNum = 6 }) => {
         case "SIGNUP":
         case "LOGIN":
           setAuth(data);
-          setError(null);
           removeOtpData();
           if (data.isAdmin) navigate("/admin-panel", { replace: true });
           else navigate(redirect, { replace: true });
@@ -47,7 +49,6 @@ const OtpForm = ({ inputNum = 6 }) => {
             userId: data.userId,
             token: data.token,
           });
-          setError(null);
           navigate("/reset-pass" + redirect);
           break;
         default:
@@ -56,10 +57,11 @@ const OtpForm = ({ inputNum = 6 }) => {
       }
     } catch (error) {
       if (error.response && error.response.data.message)
-        setError(error.response.data.message);
+        toast.error(error.response.data.message);
+      else console.log(error);
       setTimeout(() => {
         navigate("/login" + redirect);
-      }, 1500);
+      }, 3000);
     }
   };
 
@@ -153,15 +155,22 @@ const OtpForm = ({ inputNum = 6 }) => {
 
         <div className="h-5 text-red-700 text-sm text-right">
           {formik.errors["otp"] && " رمز عبور یکبار مصرف را تکمیل نمایید"}
-          {error && "عملیات ناموفق لطفا دوباره امتحان کنید"}
         </div>
 
-        <button
-          type="submit"
-          className="w-32 rounded-md bg-lime-600 mt-4 px-3 py-1.5 font-semibold text-gray-100 shadow-sm hover:bg-lime-500 "
-        >
-          ثبت
-        </button>
+        <div className="flex justify-between items-center mt-4 w-2/3 md:w-1/5">
+          <button
+            onClick={cancelOtp}
+            className="w-fit rounded-md bg-neutral-50 px-4 py-1.5 text-sm hover:font-semibold text-gray-900 shadow-sm hover:bg-red-700 hover:text-gray-100 outline outline-1 outline-offset-1 outline-red-700"
+          >
+            لغو
+          </button>
+          <button
+            type="submit"
+            className="w-fit rounded-md bg-lime-600 px-4 py-1.5 font-semibold text-gray-100 shadow-sm hover:bg-lime-500 "
+          >
+            ثبت
+          </button>
+        </div>
       </form>
     </div>
   );
