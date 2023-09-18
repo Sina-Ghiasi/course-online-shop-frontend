@@ -23,6 +23,7 @@ const ProductForm = ({ product, handleUpdate, isAddMode }) => {
   const initialValues = {
     name: product.name || "",
     description: product.description || "",
+    summary: product.summary || "",
     price: product.price || "",
     discount: product.discount || 0,
     image: "",
@@ -85,12 +86,13 @@ const ProductForm = ({ product, handleUpdate, isAddMode }) => {
           placeholder="نام محصول"
           className="w-full"
         />
+
         <Textarea
           formik={formik}
-          name="description"
-          placeholder="توضیحات"
-          label="توضیحات"
-          rows="12"
+          name="summary"
+          placeholder="توضیحات خلاصه"
+          label="توضیحات خلاصه"
+          rows="10"
           className="w-full md:w-2/3"
         />
         <div className="w-full md:w-1/3 flex flex-col items-center md:pr-3">
@@ -100,7 +102,11 @@ const ProductForm = ({ product, handleUpdate, isAddMode }) => {
           >
             عکس محصول
             {product.image && (
-              <img src={product.image} alt="product" className="p-2" />
+              <img
+                src={product.image}
+                alt="product"
+                className="p-2 mx-auto h-44"
+              />
             )}
           </label>
           <input
@@ -117,6 +123,14 @@ const ProductForm = ({ product, handleUpdate, isAddMode }) => {
             PNG, JPG ( سایز بهینه : 1024x1024px)
           </p>
         </div>
+        <Textarea
+          formik={formik}
+          name="description"
+          placeholder="توضیحات"
+          label="توضیحات"
+          rows="12"
+          className="w-full"
+        />
         <Input
           formik={formik}
           name="price"

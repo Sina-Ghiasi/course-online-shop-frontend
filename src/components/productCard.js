@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 const ProductCard = ({ product, className }) => {
   return (
     <div className={className}>
+      {console.log(product)}
       <div className="relative h-60">
-        <Link href="#">
+        <Link to={"/courses/" + product._id}>
           <img
             className="h-full object-cover mx-auto"
             src={product.image}
@@ -21,7 +22,7 @@ const ProductCard = ({ product, className }) => {
       </div>
 
       <div className="mt-4 px-5 pb-5">
-        <Link href="#" className="block mb-4">
+        <Link to={"/courses/" + product._id} className="block mb-4">
           <h5 className="text-xl font-semibold tracking-tight text-gray-800">
             {product.name}
           </h5>
@@ -41,7 +42,7 @@ const ProductCard = ({ product, className }) => {
           </div>
 
           <Link
-            href="#"
+            to="#"
             className="rounded-md bg-lime-600 px-5 py-3 text-center text-sm font-semibold text-white hover:bg-lime-500"
           >
             ثبت نام دوره

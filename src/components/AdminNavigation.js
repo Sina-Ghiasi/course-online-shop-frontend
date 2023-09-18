@@ -16,12 +16,12 @@ const AdminNavigation = () => {
           <img className="mx-auto h-20 w-auto" src={logo} alt="Doryad" />
         </Link>
       </div>
-      <ul className="flex justify-items-center flex-wrap md:flex-col gap-x-4 lg:gap-x-8 lg:text-lg mb-2">
+      <ul className="flex justify-items-center flex-wrap md:flex-col gap-y-2 gap-x-4 lg:gap-x-8 lg:text-lg mb-2 mr-8">
         <li>
           <NavLink
             to={"/admin-panel/"}
             className={({ isActive }) =>
-              `flex items-center mr-8 py-1 text-sm md:text-base text-gray-600 hover:text-gray-900 hover:font-semibold ${
+              `flex items-center  py-1 text-sm md:text-base text-gray-600 hover:text-gray-900 hover:font-semibold ${
                 isActive ? "text-gray-900 font-semibold" : ""
               }`
             }
@@ -34,7 +34,7 @@ const AdminNavigation = () => {
           <NavLink
             to={"/admin-panel/users"}
             className={({ isActive }) =>
-              `flex items-center mr-8 py-1 text-sm md:text-base text-gray-600 hover:text-gray-900 hover:font-semibold ${
+              `flex items-center py-1 text-sm md:text-base text-gray-600 hover:text-gray-900 hover:font-semibold ${
                 isActive ? "text-gray-900 font-semibold" : ""
               }`
             }
@@ -47,7 +47,7 @@ const AdminNavigation = () => {
           <NavLink
             to={"/admin-panel/products"}
             className={({ isActive }) =>
-              `flex items-center mr-8 py-1 text-sm md:text-base text-gray-600 hover:text-gray-900 hover:font-semibold ${
+              `flex items-center py-1 text-sm md:text-base text-gray-600 hover:text-gray-900 hover:font-semibold ${
                 isActive ? "text-gray-900 font-semibold" : ""
               }`
             }
@@ -60,7 +60,7 @@ const AdminNavigation = () => {
           <NavLink
             to={"/admin-panel/orders"}
             className={({ isActive }) =>
-              `flex items-center text-sm md:text-base mr-8 py-1 text-gray-600 hover:text-gray-900 hover:font-semibold ${
+              `flex items-center text-sm md:text-base py-1 text-gray-600 hover:text-gray-900 hover:font-semibold ${
                 isActive ? "text-gray-900 font-semibold" : ""
               }`
             }
@@ -69,11 +69,12 @@ const AdminNavigation = () => {
             سفارش ها
           </NavLink>
         </li>
+        <li>
+          <LogoutButton className="flex items-center text-sm md:text-base text-red-700 hover:text-red-500 hover:font-semibold">
+            <ArrowRightOnRectangleIcon className="h-6 w-6 ml-2" />
+          </LogoutButton>
+        </li>
       </ul>
-
-      <LogoutButton className="flex items-center mr-8 text-sm md:text-base text-red-700 hover:text-red-500 hover:font-semibold">
-        <ArrowRightOnRectangleIcon className="h-6 w-6 ml-2" />
-      </LogoutButton>
     </nav>
   );
 };

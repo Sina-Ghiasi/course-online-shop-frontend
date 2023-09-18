@@ -21,6 +21,7 @@ import OrdersPage from "./pages/OrdersPage";
 import NotMatchPage from "./pages/NoMatchPage";
 import UserPage from "./pages/UserPage";
 import ProductPage from "./pages/ProductPage";
+import CoursePage from "./pages/CoursePage";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/learning-roadmap" element={<LearningRoadmapPage />} />
           <Route path="/courses" element={<CoursesPage />} />
+          <Route path="/courses/:productId" element={<CoursePage />} />
           <Route path="/about-us" element={<AboutUsPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/profile" element={<ProfilePage />} />
