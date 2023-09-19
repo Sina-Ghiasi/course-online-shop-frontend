@@ -4,13 +4,21 @@ import {
   TrashIcon,
   DocumentMagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getUserData } from "../services/userServices";
+import { deleteOrderById, getAllOrders } from "../services/orderServices";
 
-const tableHeaders = ["نام کاربر", "مبلغ کل سفارش", "تاریخ سفارش", "عملکردها"];
+const tableHeaders = [
+  "نام کاربر",
+  "مبلغ کل سفارش",
+  "نوع کاربر",
+  "تاریخ سفارش",
+  "عملکردها",
+];
 const OrdersPage = () => {
-  const [orders] = useState([]);
+  const [orders, setOrders] = useState([]);
   const navigate = useNavigate();
-  /*
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -23,13 +31,12 @@ const OrdersPage = () => {
     };
     fetchData();
   }, []);
-*/
+
   const showMoreHandler = (id) => {
-    navigate("/admin-panel/users/" + id);
+    navigate("/admin-panel/orders/" + id);
   };
 
   const removeHandler = async (id) => {
-    /*
     try {
       const currentUser = getUserData();
       const { data } = await deleteOrderById(currentUser.token, id);
@@ -38,7 +45,6 @@ const OrdersPage = () => {
     } catch (error) {
       console.log(error);
     }
-    */
   };
 
   return (
@@ -64,34 +70,34 @@ const OrdersPage = () => {
             </tr>
           </thead>
           <tbody>
-            {orders.map(
-              ({ _id, name, phoneNumber, isAdmin, createdAt }, index) => (
-                <tr key={_id} className="even:bg-gray-100 text-xs md:text-sm">
-                  <td className="p-2 md:p-3">{name}</td>
-                  <td className="p-2 md:p-3">{phoneNumber}</td>
-                  <td className="p-2 md:p-3">{isAdmin ? "مدیر" : "مشتری"}</td>
-                  <td className="p-2 md:p-3">
-                    {new Date(createdAt).toLocaleDateString("fa-IR")}
-                  </td>
-                  <td className="p-2 md:p-3">
-                    <button
-                      onClick={() => {
-                        showMoreHandler(_id);
-                      }}
-                    >
-                      <DocumentMagnifyingGlassIcon className="h-4 w-4 md:h-5 md:w-5 mx-2 text-gray-900 hover:scale-105 duration-200" />
-                    </button>
-                    <button
-                      onClick={() => {
-                        removeHandler(_id);
-                      }}
-                    >
-                      <TrashIcon className="h-4 w-4 md:h-5 md:w-5 mx-2 text-red-700 hover:scale-105 duration-200" />
-                    </button>
-                  </td>
-                </tr>
-              )
-            )}
+            {orders.map(({ _id, totalPrice, userId, createdAt }, index) => (
+              <tr key={_id} className="even:bg-gray-100 text-xs md:text-sm">
+                <td className="p-2 md:p-3">{userId.name}</td>
+                <td className="p-2 md:p-3">{totalPrice}</td>
+                <td className="p-2 md:p-3">
+                  {userId.isAdmin ? "مدیر" : "مشتری"}
+                </td>
+                <td className="p-2 md:p-3">
+                  {new Date(createdAt).toLocaleDateString("fa-IR")}
+                </td>
+                <td className="p-2 md:p-3">
+                  <button
+                    onClick={() => {
+                      showMoreHandler(_id);
+                    }}
+                  >
+                    <DocumentMagnifyingGlassIcon className="h-4 w-4 md:h-5 md:w-5 mx-2 text-gray-900 hover:scale-105 duration-200" />
+                  </button>
+                  <button
+                    onClick={() => {
+                      removeHandler(_id);
+                    }}
+                  >
+                    <TrashIcon className="h-4 w-4 md:h-5 md:w-5 mx-2 text-red-700 hover:scale-105 duration-200" />
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

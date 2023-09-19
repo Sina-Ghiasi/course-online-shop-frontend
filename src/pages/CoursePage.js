@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../services/productServices";
+import { useCartActions } from "../providers/CartProvider";
 
 const CoursePage = () => {
   const { productId } = useParams();
-
   const [product, setProduct] = useState({});
+
+  const dispatch = useCartActions();
+  const addProductHandler = (product) => {
+    dispatch({ type: "ADD_TO_CART", payload: product });
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -63,7 +68,10 @@ const CoursePage = () => {
                 )}
                 <div>{product.price} تومان</div>
               </div>
-              <button className="w-fit rounded-md bg-lime-600 px-3 md:px-5 py-1.5 md:py-3 text-center text-sm font-semibold text-white hover:bg-lime-500">
+              <button
+                onClick={() => addProductHandler(product)}
+                className="w-fit rounded-md bg-lime-600 px-3 md:px-5 py-1.5 md:py-3 text-center text-sm font-semibold text-white hover:bg-lime-500"
+              >
                 ثبت نام در دوره
               </button>
             </div>

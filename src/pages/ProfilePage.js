@@ -3,17 +3,31 @@ import { useAuth } from "../providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import LogoutButton from "../components/LogoutButton";
 import { ArrowRightOnRectangleIcon } from "@heroicons/react/24/outline";
+// import { getUserData } from "../services/userServices";
 
 const tableHeaders = ["نام دوره", "تاریخ ثبت", "کد لایسنس دوره"];
 
 const ProfilePage = () => {
   const navigate = useNavigate();
   const userData = useAuth();
-
+  // const [orders, setOrders] = useState([]);
   useEffect(() => {
     if (!userData) navigate(-1);
   }, [userData, navigate]);
-
+  /*
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const currentUser = getUserData();
+        const { data } = await getAllOrders(currentUser.token);
+        setOrders(data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchData();
+  }, []);
+  */
   return (
     <div className="container mx-auto p-3 flex items-start justify-between flex-wrap md:flex-nowrap gap-5 md:gap-10">
       <div className="w-full md:w-1/3 lg:w-1/4 bg-white shadow-md rounded-md px-6 py-4 text-right">

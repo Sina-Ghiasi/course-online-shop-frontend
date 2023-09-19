@@ -24,7 +24,7 @@ const DashboardPage = () => {
         const last24HoursOrdersCount = (
           await getNumberOfOrdersBetween(currentUser.token, {
             lt: currentTime,
-            gt: currentTime - 24 * 60 * 60,
+            gt: currentTime - 24 * 60 * 60 * 1000,
           })
         ).data;
         setDashboardData({

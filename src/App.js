@@ -26,6 +26,7 @@ import CartProvider from "./providers/CartProvider";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
+import OrderPage from "./pages/OrderPage";
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
               <Route path="products/add" element={<ProductPage />} />
               <Route path="products/:productId" element={<ProductPage />} />
               <Route path="orders" element={<OrdersPage />} />
+              <Route path="orders/:orderId" element={<OrderPage />} />
             </Route>
           </Route>
         </Routes>

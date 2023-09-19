@@ -1,10 +1,29 @@
 import { useCart, useCartActions } from "../providers/CartProvider";
 import { XCircleIcon } from "@heroicons/react/24/outline";
+import { makeOrder } from "../services/orderServices";
+import { getUserData } from "../services/userServices";
+import { toast } from "react-toastify";
 
 const CartPage = () => {
   const { cart, total } = useCart();
   const dispatch = useCartActions();
 
+  const checkoutHandler = async () => {
+    const currentUser = getUserData();
+
+    try {
+      await makeOrder(currentUser.token, {
+        phoneNumber: currentUser.phoneNumber,
+        productIds: cart.map((item) => item._id),
+      });
+    } catch (error) {
+      if (error.response && error.response.data.message)
+        toast.error(error.response.data.message);
+      else {
+        console.log(error);
+      }
+    }
+  };
   const decHandler = (cartItem) => {
     dispatch({ type: "REMOVE_FROM_CART", payload: cartItem });
   };
@@ -71,7 +90,7 @@ const CartPage = () => {
               </div>
             </div>
             <button
-              to="/login?redirect=checkout"
+              onClick={checkoutHandler}
               className="w-full rounded-md bg-lime-600 px-5 py-2 text-center text-sm font-semibold text-white hover:bg-lime-500"
             >
               پرداخت

@@ -28,6 +28,7 @@ const ProductForm = ({ product, handleUpdate, isAddMode }) => {
     price: product.price || "",
     discount: product.discount || 0,
     image: "",
+    spotPlayerId: product.spotPlayerId || "",
   };
   const onSubmit = async (values) => {
     const formData = new FormData();
@@ -43,9 +44,9 @@ const ProductForm = ({ product, handleUpdate, isAddMode }) => {
         navigate("/admin-panel/products");
       } catch (error) {
         if (error.response && error.response.data.message)
-          setError(error.response.data.message);
+          toast.error(error.response.data.message);
         else {
-          setError("انتشار محصول نا موفق ، دوباره امتحان کنید");
+          console.log(error);
         }
       }
     } else {
@@ -54,13 +55,13 @@ const ProductForm = ({ product, handleUpdate, isAddMode }) => {
 
         const { data } = await updateProduct(currentUser.token, formData);
         handleUpdate(data);
-        toast.success("آپدیت با موفقیت انجام شد");
+        toast.success("بروزرسانی با موفقیت انجام شد");
         setError(null);
       } catch (error) {
         if (error.response && error.response.data.message)
-          setError(error.response.data.message);
+          toast.error(error.response.data.message);
         else {
-          setError("بروزرسانی محصول نا موفق ، دوباره امتحان کنید");
+          console.log(error);
         }
       }
     }
@@ -133,13 +134,22 @@ const ProductForm = ({ product, handleUpdate, isAddMode }) => {
           rows="12"
           className="w-full"
         />
+
+        <Input
+          formik={formik}
+          name="spotPlayerId"
+          type="text"
+          placeholder="شناسه اسپات پلیر"
+          label="شناسه اسپات پلیر"
+          className="md:w-2/5"
+        />
         <Input
           formik={formik}
           name="price"
           type="number"
           placeholder="قیمت"
           label="قیمت (تومان)"
-          className="md:w-2/4"
+          className="md:w-1/5"
         />
         <Input
           formik={formik}
@@ -147,13 +157,13 @@ const ProductForm = ({ product, handleUpdate, isAddMode }) => {
           type="number"
           placeholder="درصد تخفیف"
           label="درصد تخفیف"
-          className="md:w-1/4"
+          className="md:w-1/5"
         />
 
         <button
           type="submit"
           disabled={!formik.isValid}
-          className="flex justify-center self-center rounded-md bg-lime-600 px-3 py-1.5 text-sm font-semibold text-gray-100 shadow-sm hover:bg-lime-500 "
+          className="flex justify-center self-center rounded-md mt-2 bg-lime-600 px-3 py-1.5 text-sm font-semibold text-gray-100 shadow-sm hover:bg-lime-500 "
         >
           {isAddMode ? "انتشار محصول جدید" : "بروزرسانی محصول"}
         </button>
