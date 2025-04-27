@@ -13,16 +13,16 @@ Welcome to the **Course Online Shop Frontend** repository! This project powers t
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Technologies Used](#technologies-used)
-- [Getting Started](#getting-started)
+- [Overview](#-overview)
+- [Technologies Used](#%EF%B8%8F-technologies-used)
+- [Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Usage](#usage)
-- [Screenshots](#screenshots)
-- [Related Repositories](#related-repositories)
-- [Contributing](#contributing)
-- [License](#license)
+- [Usage](#-usage)
+- [Screenshots](#-screenshots)
+- [Related Repositories](#-related-repositories)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ## 📖 Overview
 
