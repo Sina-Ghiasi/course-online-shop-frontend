@@ -6,6 +6,7 @@
 ![GitHub Repo Size](https://img.shields.io/github/repo-size/Sina-Ghiasi/course-online-shop-frontend?style=flat&color=purple)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Sina-Ghiasi/course-online-shop-frontend)
 ![GitHub Last Commit](https://img.shields.io/github/last-commit/Sina-Ghiasi/course-online-shop-frontend?style=flat&color=cyan)
+![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white&style=flat)
 ![React](https://img.shields.io/badge/React-361D5C?logo=react&logoColor=#6F66FF&style=flat)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-1D202A?logo=tailwind-css&logoColor=#00BCFF&style=flat)
 
@@ -31,6 +32,7 @@ The frontend of the Course Online Shop is designed to deliver an intuitive and e
 ## 🛠️ Technologies Used
 
 - **React.js** ⚛️
+- **Vite** ⚡
 - **Tailwind CSS** 🎨
 - **JavaScript** 💻
 - **Axios** for API requests 🌍
@@ -68,17 +70,17 @@ This frontend requires a backend API to function. The recommended backend is the
 4. Create a `.env` file in the root directory and add the backend API URL (update the URL to match your backend's address):
 
    ```env
-   REACT_APP_API_URL=http://localhost:5000/api
+   VITE_API_URL=http://localhost:5000/api
    ```
 
 5. Ensure the [Course Online Shop Backend](https://github.com/Sina-Ghiasi/course-online-shop-backend) is set up and running. Follow its setup instructions to start the backend server.
 
 6. Start the development server:
    ```bash
-   npm start
+   npm run dev
    ```
 
-The app should now be running at `http://localhost:3000`. 🎉
+The app should now be running at `http://localhost:5173`. 🎉
 
 ## 📚 Usage
 
